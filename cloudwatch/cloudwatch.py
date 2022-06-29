@@ -68,6 +68,10 @@ class CloudwatchHandler(logging.Handler):
     except self.logs.exceptions.ResourceAlreadyExistsException:
       #Ignore ResourceAlreadyExistsException that arises if we have no token but means the stream does exist
       pass
+    
+    except Exception as e:
+      print(e)
+      pass
 
     #Continue to initialize the rest of the handler (from its parent logging.Handler)
     logging.Handler.__init__(self)
